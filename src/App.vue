@@ -1,31 +1,49 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="main" :style="cssVariable">
+    <Header />
+    <Main/>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
-
+<script>
+import { computed } from "vue";
+import Header from './components/Header.vue';
+import Main from './components/Main.vue';
+import { darkMode } from './color';
+export default{
+  components: {
+    Header,
+    Main
+  },
+  data() {
+    return {
+      colors: { ...darkMode },
+      language: {lang:'中文'},
+    };
+  },
+  computed:{
+    cssVariable(){
+      const keys = Object.getOwnPropertyNames(this.colors);
+      const css = {};
+      keys.forEach((key) => {
+        css["--" + key] = this.colors[key];
+      });
+      return css;
+    },
+  },
+  provide() {
+    return {
+      $_language: computed(() => this.language),
+      $_colors: computed(() => this.colors),
+    };
+  }
+}
+</script>
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
 }
 </style>
