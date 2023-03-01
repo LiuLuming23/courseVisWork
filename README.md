@@ -2,7 +2,7 @@
 
 
 
-![可视化界面图](src\assets\img.png)
+![可视化界面图](src/assets/img.png)
 
 
 
