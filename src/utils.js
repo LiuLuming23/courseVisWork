@@ -4,4 +4,6 @@ export default class Utils{
           ref[nxtKey] = nxt[nxtKey];
         }
       }
+      static stuUrl="http://localhost:10010/stu"
+      static dataUrl="http://localhost:10010/data"
 }

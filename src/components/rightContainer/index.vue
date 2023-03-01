@@ -1,13 +1,19 @@
 <template>
   <div class="rightContainer">
-    <div class="bostonChart">消费情况</div>
-    <div class="waveChart">考试成绩波动图</div>
+    <div class="bostonChart"><Scatter/></div>
+    <div class="waveChart"><KChart/></div>
   </div>
 </template>
 
 <script>
+import Scatter from "../Charts/Scatter.vue"
+import KChart from "../Charts/KChart.vue"
 export default {
-    name:'RightContainer'
+    name:'RightContainer',
+    components:{
+      Scatter,
+      KChart
+    }
 }
 </script>
 

@@ -1,14 +1,23 @@
 <template>
   <div class="leftContainer">
-    <div class="lineChart">近期考试成绩走势图</div>
-    <div class="radarChart" >学习力雷达图</div>
-    <div class="barChart">单科考试成绩图</div>
+    <div class="lineChart"><StackedLineChart/></div>
+    <div class="radarChart" ><RadarChart/></div>
+    <div class="barChart"><BarChart/></div>
   </div>
 </template>
 
 <script>
+import StackedLineChart from "../Charts/StackedLineChart.vue"
+import RadarChart from "../Charts/RadarChart.vue"
+import BarChart from "../Charts/BarChart.vue"
 export default {
-    name:"LeftContainer"
+    name:"LeftContainer",
+    components:{
+      StackedLineChart,
+      RadarChart,
+      BarChart
+    }
+    
 }
 </script>
 
